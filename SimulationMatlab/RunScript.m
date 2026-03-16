@@ -4,6 +4,8 @@ clear
 % 1. Get a list of all CSV files in the current folder
 files = dir('*.csv');
 
+draw = 0;
+
 intersectiontimes = zeros(length(files),2);
 crashdata = zeros(length(files),2);
 withoutsolution = 0;
@@ -14,7 +16,7 @@ for i = 1:length(files)
     fprintf('Processing file %d of %d: %s\n', i, length(files), files(i).name);
     
     % Get the full filename
-    [Data, crashbymode, averagetime, gamemode] = plotsimulationdata(files(i).name);
+    [Data, crashbymode, averagetime, gamemode] = plotsimulationdata(files(i).name, draw);
     
     % Store the results
     intersectiontimes(i,:) = averagetime;
